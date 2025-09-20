@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 export interface Coin {
@@ -30,5 +30,8 @@ const fetchCoins = async (): Promise<Coin[]> => {
 }
 
 export const useFetchCoins = () => {
-    return useQuery('coins', fetchCoins);
+    return useQuery({
+        queryFn:fetchCoins,
+        queryKey: ['coins']
+    });
 }
